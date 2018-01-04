@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5b0f07fd-dbee-4b44-a27e-62b46b9c4470" name="vendor" url="http://localhost">
+        <fileTransfer mountedRoot="C:\wamp64\www\Apiculture\vendor" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
