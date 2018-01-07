@@ -12,8 +12,57 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if (isset($ruches))
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 400px;
+            width: 700px;
+            margin:50px auto;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb6e8EUsL6tb_kK2T1brzB0CkUIDsTRwE&sensor=false"></script>
+    <script>
+        // effet bounce
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+        function initialize() {
+            // récupération des ruches de l'utilisateur
+            var mesRuches = <?php echo json_encode($ruches);?>;
+            // option de la map
+            var mapOptions = {
+                zoom: 5,
+                center: new google.maps.LatLng(48,2),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            // création d'une Google Map avec API
+            var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+            // Ajout d'un marqueur sur la map par ruche, le marqueur est déplaçable et à un effet bounce au chargement de la map
+            mesRuches.forEach(function(uneRuche){
+                var marker= new google.maps.Marker({
+                    position: new google.maps.LatLng(uneRuche['longitude'],uneRuche['latitude']),
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    map: map,
+                    title: uneRuche['titre']
+                });
+                marker.addListener('click', toggleBounce);
+            });
+        }
+    </script>
+        @endif
 </head>
-<body>
+<body onload="initialize()">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

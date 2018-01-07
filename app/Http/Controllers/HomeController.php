@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // récupération des ruches de l'utilisateur
+        $ruches = DB::table('ruches')
+            ->select('*')
+            ->where('idUser', '=', Auth::user()->id)
+            ->get();
+        // retourne la vue home avec les ruches pour la construction des marker de la map
+        return view('home')->with("ruches",$ruches);
     }
 }

@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    Tu es connecté!
+                   Vos ruches <b>{{ Auth::user()->name }} </b>
+                        <!-- la div avec un id de map_canvas permet l'affichage de la Google Map -->
+                        <div id="map_canvas"></div>
                 </div>
             </div>
         </div>
