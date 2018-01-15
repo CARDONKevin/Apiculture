@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Intervention;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Ruche;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class RucheController extends Controller
 {
@@ -48,9 +50,26 @@ class RucheController extends Controller
         $ruche->save();
         // retourner une réponse JSON avec les données
         return response()->json([
+            'id' => $ruche->id,
             'titre' => $ruche->titre,
             'longitude' => $ruche->longitude,
             'latitude' => $ruche->latitude
+        ]);
+    }
+
+    public function read($id)
+    {
+        // récupération des interventions paginés 10 par page du plus récent au plus ancien
+        $interventions = DB::table('interventions')
+            ->select('*')
+            ->where('idRuche', '=', $id)
+            ->latest('date_creation')
+            ->paginate(10);
+        $interventions->setPath('home');
+        $pagination = ''.$interventions->appends(['idRuche' => $id])->links().'';
+        return response()->json([
+            'interventions' => $interventions,
+           'pagination' => $pagination
         ]);
     }
 }
