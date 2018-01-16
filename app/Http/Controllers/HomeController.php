@@ -43,7 +43,8 @@ class HomeController extends Controller
             $pagination = ''.$interventions->appends(['idRuche' => $_GET['idRuche']])->links().'';
             return response()->json([
                 'interventions' => $interventions,
-                'pagination' => $pagination
+                'pagination' => $pagination,
+                'idRuche' => $_GET['idRuche']
             ]);
         }
         // retourne la vue home avec les ruches pour la construction des marker de la map

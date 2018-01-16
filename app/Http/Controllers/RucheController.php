@@ -69,7 +69,8 @@ class RucheController extends Controller
         $pagination = ''.$interventions->appends(['idRuche' => $id])->links().'';
         return response()->json([
             'interventions' => $interventions,
-           'pagination' => $pagination
+           'pagination' => $pagination,
+            'idRuche' => $id
         ]);
     }
 }

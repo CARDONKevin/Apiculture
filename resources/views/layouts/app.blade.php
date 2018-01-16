@@ -116,6 +116,7 @@
                                         var d = new Date(element['date_creation']);
                                         texte=texte+"<tr><td>"+d.toLocaleString()+'</td><td><p>'+element['texte']+"</p></td></tr>";
                                     })
+                                    document.getElementById('idRuche').setAttribute('value', data['idRuche'])
                                     document.getElementById('lesInterventions').innerHTML=texte;
                                     $('#pagination').html(data['pagination']);
                                 })

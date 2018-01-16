@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/ruche/insert',  'RucheController@insert')->name('rucheInsert');
 // route pour consulter les interventions de la ruche via pop in
 Route::get('/ruche/consulter/{id}',  'RucheController@read')->name('consultation');
+// route pour l'insertion des interventions
+Route::post('/intervention/insert',  'InterventionController@insert')->name('interventionInsert');
