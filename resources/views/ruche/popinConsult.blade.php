@@ -7,6 +7,11 @@
  */
 ?>
 <script type="text/javascript">
+    $( function() {
+        $('#addProduction').click(function () {
+            $('#myModalProduction').modal();
+        });
+    });
     function AfficherFormIntervention() {
         // on récupère l'élément form.
         var form = document.getElementById('formCreateIntervention');
@@ -20,6 +25,7 @@
         var bouton = document.getElementById('addIntervention');
         form.style.display = "none";
         bouton.style.display = "block";
+        document.getElementById('texte').value="";
     }
     // obtention des interventions
     function getInterventions(url) {
@@ -54,7 +60,7 @@
                         CacherFormIntervention();
                     })
                     .fail(function (data) {
-                        document.getElementById('texte').setAttribute( 'placeholder','impossible de stocker une intervention vide')
+                        document.getElementById('texte').setAttribute( 'placeholder','impossible de stocker une intervention vide');
                     });
         });
     })

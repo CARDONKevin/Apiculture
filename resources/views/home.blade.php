@@ -5,6 +5,8 @@
 @include("ruche.popinAdd")
 <!-- inclusion de la pop in pour la consultation des ruches, qui montre les interventions, bouuton ajout et production -->
 @include("ruche.popinConsult")
+<!-- inclusion de la pop in pour l'ajout de la production des ruches-->
+@include("ruche.popinProduction")
 
 <!-- affiche du nom de la personne et de la map avec les markers de position des ruches   -->
 <div class="container">

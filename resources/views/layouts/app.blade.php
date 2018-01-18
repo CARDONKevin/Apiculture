@@ -18,6 +18,28 @@
                 }
             })
     </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Charge google charts sur le site
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        // dessine le graphique grâce aux valeurs récupérer
+        function drawChart(data) {
+            var donnees = new google.visualization.DataTable();
+            donnees.addColumn('string', 'Date');
+            donnees.addColumn('number', 'Poids (g)');
+            data.forEach(function(element){
+                donnees.addRow([element[0], parseInt(element[1])]);
+             })
+            // Optional; add a title and set the width and height of the chart
+            var options = {'title':'Production de votre ruche en gramme par mois', pointSize: 5, 'width':550, 'height':300};
+            // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.LineChart(document.getElementById('piechart'));
+            chart.draw(donnees, options);
+        }
+
+    </script>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -116,9 +138,12 @@
                                         var d = new Date(element['date_creation']);
                                         texte=texte+"<tr><td>"+d.toLocaleString()+'</td><td><p>'+element['texte']+"</p></td></tr>";
                                     })
-                                    document.getElementById('idRuche').setAttribute('value', data['idRuche'])
+                                    document.getElementById('idRuche').setAttribute('value', data['idRuche']);
+                                    document.getElementById('idRucheRecolte').setAttribute('value', data['idRuche']);
                                     document.getElementById('lesInterventions').innerHTML=texte;
                                     $('#pagination').html(data['pagination']);
+                                    drawChart(data['recoltes'], data['poidsTotal'] );
+                                    document.getElementById('poidsTotalRecoltes').innerHTML=data['poidsTotal'];
                                 })
                                 .fail(function (data) {
                                     alert('erreur');

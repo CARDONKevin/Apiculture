@@ -29,7 +29,6 @@
                         dataType: "json"
                     })
                     .done(function (data) {
-                        $('.alert-success').removeClass('hidden');
                         $('#myModal').modal('hide');
                         var monTitre = data['titre'];
                         var maLong = data['longitude'];
@@ -52,15 +51,21 @@
                                     })
                                     .done(function (data) {
                                         $('#myModalInterv').modal();
+                                        document.getElementById('titre').value="";
+                                        document.getElementById('longitude').value="";
+                                        document.getElementById('latitude').value="";
                                         var lesInterventions = data['interventions']['data'];
                                         var texte="";
                                         lesInterventions.forEach(function(element){
                                             var d = new Date(element['date_creation']);
                                             texte=texte+"<tr><td>"+d.toLocaleString()+'</td><td><p>'+element['texte']+"</p></td></tr>";
                                         })
-                                        document.getElementById('idRuche').setAttribute('value', data['idRuche'])
+                                        document.getElementById('idRuche').setAttribute('value', data['idRuche']);
+                                        document.getElementById('idRucheRecolte').setAttribute('value', data['idRuche']);
                                         document.getElementById('lesInterventions').innerHTML=texte;
                                         $('#pagination').html(data['pagination']);
+                                        drawChart(data['recoltes'], data['poidsTotal']);
+                                        document.getElementById('poidsTotalRecoltes').innerHTML=data['poidsTotal'];
                                     })
                                     .fail(function (data) {
                                         alert('erreur');

@@ -20,7 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 // route pour l'insertion des ruches dans une pop in
 Route::post('/ruche/insert',  'RucheController@insert')->name('rucheInsert');
-// route pour consulter les interventions de la ruche via pop in
+// route pour consulter les interventions et les récoltes de la ruche via pop in
 Route::get('/ruche/consulter/{id}',  'RucheController@read')->name('consultation');
 // route pour l'insertion des interventions
 Route::post('/intervention/insert',  'InterventionController@insert')->name('interventionInsert');
+// route pour la saisie des récoltes pour une ruche
+Route::post('/ruche/production',  'ProductionController@insert')->name('insertRecolte');
+
