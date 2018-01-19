@@ -42,6 +42,15 @@
                             map: map,
                             title: monTitre
                         });
+                        markers.push(marker);
+                        marker.addListener('mousedown', function() {
+                            document.getElementById('markerSelectedID').setAttribute('value', marker.id);
+                            document.getElementById('markerSelectedTitle').setAttribute('value', marker.title);
+                        });
+                        marker.addListener('mouseup', function() {
+                            document.getElementById('markerSelectedID').setAttribute('value', '0');
+                            document.getElementById('markerSelectedTitle').setAttribute('value', 'aucune balise');
+                        });
                         marker.addListener('click', function() {
                             $.ajax({
                                         method: 'get',

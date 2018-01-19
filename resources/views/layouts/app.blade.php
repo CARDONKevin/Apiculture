@@ -56,7 +56,7 @@
 
             #map_canvas {
                 height: 400px;
-                width: 700px;
+                width: 100%;
                 margin: 50px auto;
             }
             #tableau {
@@ -66,6 +66,17 @@
                 width: 100%;
                 text-align: left;
                 border-collapse: collapse;
+            }
+            #floating-panel {
+                position: absolute;
+                top: 35%;
+                left: 17%;
+                z-index: 5;
+                padding: 5px;
+                text-align: center;
+                font-family: 'Roboto','sans-serif';
+                line-height: 30px;
+                padding-left: 10px;
             }
             #tableau th {
                 font-size: 13px;
@@ -101,6 +112,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb6e8EUsL6tb_kK2T1brzB0CkUIDsTRwE&sensor=false"></script>
         <script>
             var map;
+            var markers = [];
             function initialize() {
                 // récupération des ruches de l'utilisateur
                 var mesRuches = <?php echo json_encode($ruches);?>;
@@ -122,6 +134,15 @@
                         animation: google.maps.Animation.DROP,
                         map: map,
                         title: uneRuche['titre']
+                    });
+                    markers.push(marker);
+                    marker.addListener('mousedown', function() {
+                        document.getElementById('markerSelectedID').setAttribute('value', marker.id);
+                        document.getElementById('markerSelectedTitle').setAttribute('value', marker.title);
+                    });
+                    marker.addListener('mouseup', function() {
+                        document.getElementById('markerSelectedID').setAttribute('value', '0');
+                        document.getElementById('markerSelectedTitle').setAttribute('value', 'aucune balise');
                     });
                     marker.addListener('click', function() {
                         $.ajax({

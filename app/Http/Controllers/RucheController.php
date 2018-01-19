@@ -107,4 +107,14 @@ class RucheController extends Controller
             'poidsTotal' => $poidsTotal/1000
         ]);
     }
+    public function delete($id)
+    {
+        // supprime les interventions, les récoltes liés à la ruche
+        DB::table('interventions')->where('idRuche', '=', $id)->delete();
+        DB::table('recoltes')->where('idRuche', '=', $id)->delete();
+        /// suppression de la ruche
+        DB::table('ruches')->where('id', '=', $id)->delete();
+        return response()->json([
+        ]);
+    }
 }

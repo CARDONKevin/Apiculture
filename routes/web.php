@@ -26,4 +26,6 @@ Route::get('/ruche/consulter/{id}',  'RucheController@read')->name('consultation
 Route::post('/intervention/insert',  'InterventionController@insert')->name('interventionInsert');
 // route pour la saisie des récoltes pour une ruche
 Route::post('/ruche/production',  'ProductionController@insert')->name('insertRecolte');
+// route pour supprimer les ruches et les récoltes/interventions de la ruche
+Route::get('/ruche/supprimer/{id}',  'RucheController@delete')->name('deleteRuche');
 
