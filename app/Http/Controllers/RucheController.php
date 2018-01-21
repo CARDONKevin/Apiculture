@@ -76,6 +76,10 @@ class RucheController extends Controller
 
     public function read($id)
     {
+        // Si l'utilisateur n'est pas authentifié
+        if(Auth::guest()){
+            return View('errors.error403');
+        }
         // récupération des interventions paginés 10 par page du plus récent au plus ancien
         $interventions = DB::table('interventions')
             ->select('*')
@@ -109,6 +113,10 @@ class RucheController extends Controller
     }
     public function delete($id)
     {
+        // Si l'utilisateur n'est pas authentifié
+        if(Auth::guest()){
+            return View('errors.error403');
+        }
         // supprime les interventions, les récoltes liés à la ruche
         DB::table('interventions')->where('idRuche', '=', $id)->delete();
         DB::table('recoltes')->where('idRuche', '=', $id)->delete();
