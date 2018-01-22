@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading" style="text-align: center">Créer un compte</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -74,4 +74,5 @@
         </div>
     </div>
 </div>
+<img src="images/abeilleInscription.png" style="display:block;margin:auto; width:20%; height: 20%"/>
 @endsection

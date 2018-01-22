@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading" style="text-align: center">Se connecter</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -66,4 +66,6 @@
         </div>
     </div>
 </div>
+
+<img src="images/abeilleInscription.png" style="display:block;margin:auto; width:20%; height: 20%"/>
 @endsection

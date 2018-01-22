@@ -88,7 +88,7 @@
                             aria-hidden="true">×</span></button>
                 <h4 class="modal-title" id="myModalLabel">
                     <button id="addProduction" style="background:PaleGoldenRod;">Production</button>
-                    Consulter les interventions de votre ruche
+                      Consulter les interventions de votre ruche
                 </h4>
             </div>
             <div class="modal-body">

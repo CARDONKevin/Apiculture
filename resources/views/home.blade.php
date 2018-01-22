@@ -59,7 +59,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"> Tableau de bord</div>
+                <div class="panel-heading" style="text-align: center"> Tableau de bord de <b>{{ Auth::user()->name }} </b> </div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -68,10 +68,10 @@
                         </div>
                     @endif
 
-                    Vos ruches <b>{{ Auth::user()->name }} </b> <br/>
+                    Vos ruches sont localisés sur la map
 
                     <!--   bouton avec icone de la ruche pour déclencher l'ajout via une pop in -->
-                    <button id="addRuche" style="background:none;">Add Ruche<img src="images/rucheAbeille.png"
+                    <button id="addRuche" style="background:none; float: right">Add Ruche<img src="images/rucheAbeille.png"
                                                                                  alt="Add Ruche"
                                                                                  style="width:50px; height:50px;"/>
                     </button>

@@ -39,7 +39,7 @@
             <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"  style="background: none; border: none; float: left;"><span
                         aria-hidden="true"><img src="images/fermer.png"/></span></button>
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Ajouter une nouvelle récolte</h4>
+                <h4 class="modal-title" id="myModalLabel" style="text-align: center">Ajouter une nouvelle récolte</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">

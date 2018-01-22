@@ -46,6 +46,17 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        footer{
+            background:black;
+            color: white;
+            text-align: center;
+            position:absolute;
+            bottom:0;
+            width:100%;
+            height: 5%;
+        }
+    </style>
     @if (isset($ruches))
         <style>
             html, body {
@@ -53,7 +64,13 @@
                 margin: 0;
                 padding: 0;
             }
-
+            body{
+                background: url('images/fondRuche.jpg');
+            }
+            button{
+                border-radius:8px;
+                font:bold 13px Arial;
+            }
             #map_canvas {
                 height: 400px;
                 width: 100%;
@@ -197,6 +214,7 @@
                 <a class="navbar-brand" href="">
                     Apiculture
                 </a>
+                <img src="images/abeille.png" style="float: left; width:6%; height: 6%" />
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -244,5 +262,10 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<footer>
+
+    <p>Projet PHP réalisé par Kévin CARDON</p>
+
+</footer>
 </body>
 </html>
